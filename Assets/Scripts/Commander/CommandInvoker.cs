@@ -4,7 +4,16 @@ using System.Collections.Generic;
 
 namespace Game.Commander
 {
-    public class CommandInvoker
+
+    public interface ICommandInvoker
+    {
+        void Enqueue(ICommand command);
+        void ExecuteAll();
+        void UndoLast();
+        void ClearHistory();
+    }
+
+    public class CommandInvoker : ICommandInvoker
     {
         private readonly Queue<ICommand> queue = new();
         private readonly Stack<ICommand> history = new();

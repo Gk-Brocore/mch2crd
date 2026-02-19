@@ -7,19 +7,25 @@ using System.Threading.Tasks;
 
 namespace Game.Commander
 {
-    public static class CommandFactory
+    public interface ICommandFactory
     {
-        public static ICommand CreateReveal(ICard card)
+        ICommand CreateReveal(ICard card);
+        ICommand CreateHide(ICard card);
+        ICommand CreateSetMatched(ICard first, ICard second, bool matched);
+    }
+    public class CommandFactory : ICommandFactory
+    {
+        public ICommand CreateReveal(ICard card)
         {
             return new RevealCardCommand(card);
         }
 
-        public static ICommand CreateHide(ICard card)
+        public  ICommand CreateHide(ICard card)
         {
             return new HideCardCommand(card);
         }
 
-        public static ICommand CreateSetMatched(ICard first, ICard second, bool matched)
+        public ICommand CreateSetMatched(ICard first, ICard second, bool matched)
         {
             return new SetMatchedCommand(first, second, matched);
         }

@@ -36,6 +36,6 @@ namespace Game.Assets
         {
             return AssetBank.GetShuffled(_count);
         }
-        }
     }
 }
+
