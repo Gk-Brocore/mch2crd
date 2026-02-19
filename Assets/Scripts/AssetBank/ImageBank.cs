@@ -1,5 +1,5 @@
 using Game.Addressable;
-using Game.Utilities;
+using Game.Utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;

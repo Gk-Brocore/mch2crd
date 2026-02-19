@@ -11,6 +11,7 @@ namespace Game.Input
         bool IsActive { get; }
         event Action<Vector2> OnClick;
 
+
         void Tick();
     }
 }

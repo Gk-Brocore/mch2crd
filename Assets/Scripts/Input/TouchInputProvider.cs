@@ -1,3 +1,4 @@
+using Game.Utils;
 using UnityEngine;
 
 namespace Game.Input
@@ -10,7 +11,7 @@ namespace Game.Input
 
         private void OnEnable()
         {
-            Debug.Log("TouchInputProvider enabled.");
+            Utilities.Log("TouchInputProvider", "Touch Input Provider enabled.");
         }
         public void Tick()
         {

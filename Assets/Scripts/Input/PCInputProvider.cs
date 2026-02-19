@@ -1,3 +1,4 @@
+using Game.Utils;
 using UnityEngine;
 
 namespace Game.Input
@@ -13,7 +14,7 @@ namespace Game.Input
 
         private void OnEnable()
         {
-            Debug.Log("PCInputProvider enabled.");
+            Utilities.Log("PCInputProvider", "PC Input Provider enabled.");
         }
 
         public void Tick()

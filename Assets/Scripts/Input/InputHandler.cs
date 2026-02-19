@@ -1,3 +1,4 @@
+using Game.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,9 +13,26 @@ namespace Game.Input
     {
         private IInputProvider inputProvider;
 
-        public IInputProvider InputProvider => inputProvider;
+        public IInputProvider InputProvider
+        {
+            get
+            {
+                if (inputProvider == null)
+                {
+                    Init();
+                }
+
+                return inputProvider;
+            }
+        }
 
         private void Awake()
+        {
+            if (inputProvider == null)
+                Init();
+        }
+
+        private void Init()
         {
 
             var _allProviders = GetComponents<IInputProvider>();
@@ -34,7 +52,7 @@ namespace Game.Input
                 return;   
             }
 
-            Debug.Log($"Input provider {inputProvider.Name} is set on InputHandler.");
+            Utilities.Log("Input Handler", $"Input provider {inputProvider.Name} is set on InputHandler.");
         }
 
         private void Update()

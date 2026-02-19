@@ -3,6 +3,12 @@ using System;
 
 namespace Game.Events
 {
+
+    public interface IGameEventInjector
+    {
+        IGameEventsEmitter GameEventsEmitter { get; set; }
+    }
+
     public interface IGameEventsEmitter
     {
         event Action<ICard, ICard> OnMatch;

@@ -1,4 +1,5 @@
 using Game.Card;
+using Game.Utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -25,6 +26,8 @@ namespace Game.Commander
 
         public GameCommander(ICardSelector _cardSelector, ICardProcessor _cardProcessor, ICommandInvoker _invoker, ICommandFactory _commandFactory)
         {
+            Utilities.Log("GameCommander", "Initializing GameCommander with provided dependencies.");
+            Utilities.Log("GameCommander", $"CardSelector: {_cardSelector.GetType().Name}, CardProcessor: {_cardProcessor.GetType().Name}, CommandInvoker: {_invoker.GetType().Name}, CommandFactory: {_commandFactory.GetType().Name}");
             cardSelector = _cardSelector;
             cardProcessor = _cardProcessor;
             invoker = _invoker;
@@ -35,7 +38,10 @@ namespace Game.Commander
         {
             var _card = cardSelector.Select(_screenPos);
             if (_card == null || _card.IsRevealed || _card.IsMatched)
+            {
+                Utilities.Log("GameCommander", $"Invalid card selection at position {_screenPos}. Card is null, already revealed, or already matched.");
                 return;
+            }
 
             invoker.Enqueue(commandFactory.CreateReveal(_card));
             invoker.ExecuteAll();
