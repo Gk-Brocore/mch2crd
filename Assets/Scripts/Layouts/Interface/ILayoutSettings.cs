@@ -9,16 +9,16 @@ namespace Game.Layout
     /// </summary>
     public interface ILayoutSettings
     {
-        string Name { get; set; }
-        int Width { get; set; }
-        int Height { get; set; }
+        string Name { get;  }
+        int Width { get; }
+        int Height { get; }
         int TotalCombinations { get; }
-        Vector2 CellSize { get; set; }
-        Vector2 CellSpacing { get; set; }
+        Vector2 CellSize { get;  }
+        Vector2 CellSpacing { get; }
 
-        RectOffset Padding { get; set; }
+        RectOffset Padding { get;  }
 
-        Vector2 Origin { get; set; }
+        Vector2 Origin { get; }
         void PrepareLayout();
 
         CellData CreateCellData(Vector2Int _position);

@@ -34,4 +34,11 @@ namespace Game.Layout
             return $"id:{id} state:{state} revealed:{revealed} matched:{matched}";
         }
     }
+
+    [System.Serializable]
+    public class CellState
+    {
+        public Vector2Int position;
+        public State state;
+    }
 }
