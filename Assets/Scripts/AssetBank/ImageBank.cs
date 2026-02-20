@@ -72,20 +72,30 @@ namespace Game.Assets
 
             _output.Shuffle();
 
-            if (_count > _output.Count)
+            // If _count is less than or equal to available, trim as before
+            if (_count <= _output.Count)
             {
-                Debug.Log("Invalid Count");
+                var _toRemove = _output.Count - _count;
+                for (int _index = _toRemove - 1; _index >= 0; _index--)
+                {
+                    _output.RemoveAt(_index);
+                }
                 return _output;
             }
 
-            var _toRemove = _output.Count - _count;
-
-
-            for (int _index = _toRemove - 1; _index >= 0; _index--)
+            // If _count is more, add random keys until desired count
+            if (_output.Count == 0)
             {
-                _output.RemoveAt(_index);
+                Debug.LogWarning("No entries to shuffle.");
+                return _output;
             }
 
+            var rand = new System.Random();
+            while (_output.Count < _count)
+            {
+                var randomKey = _output[rand.Next(_output.Count)];
+                _output.Add(randomKey);
+            }
 
             return _output;
         }
