@@ -1,6 +1,7 @@
 ﻿using Game.Assets;
 using Game.Data;
 using Game.Layout;
+using Game.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +39,12 @@ namespace Game.Core
             else
             {
                 Instance = this;
+            }
+
+            if(gameDataBank == null)
+            {
+                Utilities.Log("Game Data Manager", "Missig Game Data");
+                return;
             }
 
             Layout = Settings.GetAsset(currentLayout).Result;

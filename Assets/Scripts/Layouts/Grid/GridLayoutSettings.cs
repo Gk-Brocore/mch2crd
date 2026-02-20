@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Game.Layout.Grid
 {
-    [CreateAssetMenu(fileName = "GridLayoutSettings", menuName = "Layouts/Grid Layout Settings")]
+    [CreateAssetMenu(fileName = "GridLayoutSettings", menuName = "ScriptableObjects/Grid Layout Settings")]
     public class GridLayoutSettings : BaseLayoutSettingsSO
     {
         public string gridName = "New Grid";
