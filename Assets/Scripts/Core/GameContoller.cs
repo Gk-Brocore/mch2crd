@@ -28,6 +28,10 @@ namespace Game.Core
         public int baseMatchScore = 100;
         public int comboBonus = 25;
         public float comboDecayTime = 3f;
+        [Header("Audio")]
+        public string mismatchSfx = "Mismatch";
+        public string matchSfx = "Match";
+        [Range(0f, 10f)] public float cheerChance = 8f;
 
         [SerializeField] private int score;
         [SerializeField] private int comboCount;
@@ -92,7 +96,10 @@ namespace Game.Core
         private void HandleMatch(ICard _first, ICard _second)
         {
             eventEmitter.EmitMatch(_first, _second);
-            //TODO : AUDIO of match
+            AudioConductor.PlaySfx(matchSfx);
+            if (UnityEngine.Random.Range(0, 10) <= cheerChance)
+                AudioConductor.PlayCheer();
+
             UpdateCombo();
             int points = baseMatchScore + (comboBonus * (comboCount - 1));
             score = points;
@@ -109,7 +116,8 @@ namespace Game.Core
             _first.Mismatch();
             _second.Mismatch();
             eventEmitter.EmitQueueCleared();
-            //TODO : AUDIO of mismatch
+
+            AudioConductor.PlaySfx(mismatchSfx);
         }
 
         private void UpdateCombo()
@@ -140,6 +148,7 @@ namespace Game.Core
 
         public void OnGameComplete()
         {
+            AudioConductor.PlaySfx("Win");
         }
 
         public void OnMatch(ICard first, ICard second)

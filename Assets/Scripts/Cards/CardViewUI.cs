@@ -90,6 +90,7 @@ namespace Game.Card
                 return;
             isRevealed = true;
             animator.SetTrigger(frontAnimHash);
+            AudioConductor.PlaySfx(clickSound);
         }
 
         public void Hide()
@@ -105,7 +106,6 @@ namespace Game.Card
             isMatched = matched;
             if (matched)
             {
-
                 animator.SetTrigger(matchHash);
             }
         }
