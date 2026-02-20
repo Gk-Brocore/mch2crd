@@ -164,7 +164,7 @@ namespace Game.Core
 
         public void OnGameLoad()
         {
-            throw new System.NotImplementedException();
+            ResetScore() ;
         }
     }
 }

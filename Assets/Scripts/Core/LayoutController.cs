@@ -1,3 +1,4 @@
+using Game.Assets;
 using Game.Card;
 using Game.Core;
 using Game.Events;
@@ -124,11 +125,21 @@ public class LayoutController : MonoBehaviour , IGameEventsObserver
     }
 
     #region Save/Load
+    private void OnApplicationPause(bool pause)
+    {
+        if (pause)
+        {
+            SaveCurrentLayout();
+        }
+    }
+    private void OnApplicationQuit() => SaveCurrentLayout();
     public void LoadGame()
     {
+
+        layoutSettings = GameDataManager.Instance.Layout;
         if (!ValidateSetup()) 
             return;
-        List<CellData> savedGrid = null; //TODO: Load from file or player prefs
+        List<CellData> savedGrid = GameDataManager.Instance.GetGridData();
         matchesFound = GetMatchCount(savedGrid);
         InitilizeLayout(MakeGridCollection());
         layout.FromList(savedGrid);
@@ -150,7 +161,9 @@ public class LayoutController : MonoBehaviour , IGameEventsObserver
         if (layout == null)
             return;
         var _fromGrid = layout.ToList();
-        //TODO: Save to file or player prefs
+        GameDataManager.Instance.SaveGridData(_fromGrid);
+        if (newGame)
+            GameDataManager.Instance.SetLevelCompleted(false);
     }
 
     #endregion
@@ -255,6 +268,7 @@ public class LayoutController : MonoBehaviour , IGameEventsObserver
 
         if (matchesFound == layoutSettings.TotalCombinations)
         {
+            GameDataManager.Instance.SetLevelCompleted(true);
             GameEventsHandler.Instance.EmitGameComplete();
         }
     }
