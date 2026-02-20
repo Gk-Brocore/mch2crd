@@ -129,6 +129,8 @@ namespace Game.Core
             lastMatchTime = 0;
             eventEmitter.EmitScoreUpdated(score);
             eventEmitter.EmitComboUpdated(comboCount);
+            commander.HandleClear();
+           
         }
 
         public void OnGameStart()

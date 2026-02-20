@@ -38,14 +38,23 @@ public class GameUIController : MonoBehaviour , IGameEventsObserver
         GameEventsHandler.UnregisterObserver(this);
     }
 
+    private void Start()
+    {
+        pnl_Grids.Setup();
+        pnl_Images.Setup();
+    }
+
     public void OnLayoutChange(ILayoutSettings layoutSettings)
     {
         GameDataManager.Instance.ChangeLayout(layoutSettings);
+        pnl_Grids.Hide();
+        pnl_Images.Show();
     }
 
 
-    public void OnImage(IAssetBank<AssetReference, Sprite> value)
+    public void OnImage(IAssetBank<AssetReferenceSprite, Sprite> value)
     {
+        pnl_Images.Hide();
         GameDataManager.Instance.ChangeImages(value);
         if(GameDataManager.Instance.HasContinue())
         {

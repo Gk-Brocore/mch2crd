@@ -34,6 +34,10 @@ namespace Game.Commander
             command.Undo();
         }
 
-        public void ClearHistory() => history.Clear();
+        public void ClearHistory()
+        {
+            queue.Clear();
+            history.Clear();
+        }
     }
 }

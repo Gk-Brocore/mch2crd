@@ -50,6 +50,8 @@ namespace Game.Card
 
         public void Initialize(string _id, Vector2Int _pos, Sprite _sprite, Vector2 _imgSize, bool _showDebug = false)
         {
+
+            animator = GetComponent<Animator>();
             coordinates = _pos;
 
             transform.localScale = Vector3.one;

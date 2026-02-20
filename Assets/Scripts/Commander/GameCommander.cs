@@ -46,8 +46,12 @@ namespace Game.Commander
 
             invoker.Enqueue(commandFactory.CreateReveal(_card));
             invoker.ExecuteAll();
-
-            if(cardProcessor.Process(first, _card))
+            if (first == null)
+            {
+                first = _card;
+                return;
+            }
+            if (cardProcessor.Process(first, _card))
             {
                 invoker.Enqueue(commandFactory.CreateSetMatched(first, _card, true));
                 invoker.ExecuteAll();
@@ -68,6 +72,12 @@ namespace Game.Commander
         public void HandleUndo()
         {
             invoker.UndoLast();
+        }
+
+        public void HandleClear()
+        {
+            invoker.ClearHistory();
+            first = null;
         }
     }
 }

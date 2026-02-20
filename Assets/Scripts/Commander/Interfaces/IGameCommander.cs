@@ -9,6 +9,8 @@ namespace Game.Commander
         void HandleSelect(Vector2 _screenPos);
         void HandleUndo();
 
+        void HandleClear();
+
         event Action<ICard, ICard> OnMatch;
         event Action<ICard, ICard> OnMismatch;
     }

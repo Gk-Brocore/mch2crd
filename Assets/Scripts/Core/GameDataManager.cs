@@ -28,7 +28,7 @@ namespace Game.Core
         public static IAssetBank<ImageBank, ImageBank> Images => Instance.gameDataBank;
 
         public ILayoutSettings Layout;
-        public IAssetBank<AssetReference, Sprite> ImageBank;
+        public IAssetBank<AssetReferenceSprite, Sprite> ImageBank;
 
         private void Awake()
         {
@@ -74,7 +74,7 @@ namespace Game.Core
             Layout = _layout;
         }
 
-        public void ChangeImages(IAssetBank<AssetReference, Sprite> value)
+        public void ChangeImages(IAssetBank<AssetReferenceSprite, Sprite> value)
         {
             currentImages = value.Name;
             ImageBank = value;

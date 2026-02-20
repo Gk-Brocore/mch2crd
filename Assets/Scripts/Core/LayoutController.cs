@@ -43,7 +43,6 @@ public class LayoutController : MonoBehaviour , IGameEventsObserver
         canvasGroup = GridUiLayout.GetComponent<CanvasGroup>();
         cardFactory = new AddressableCardFactory(cardPrefab);
 
-        layoutSettings = GameDataManager.Instance.Layout;
         layoutView = GridUiLayout;
     }
 
@@ -58,6 +57,8 @@ public class LayoutController : MonoBehaviour , IGameEventsObserver
 
     public void StartGame()
     {
+        
+        layoutSettings = GameDataManager.Instance.Layout;
         if (!ValidateSetup()) 
             return;
         matchesFound = 0;

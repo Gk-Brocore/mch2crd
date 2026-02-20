@@ -26,7 +26,7 @@ namespace Game.Assets
         /// Can be changed to other implementations of IAssetBank if needed, 
         /// allowing for flexibility in how images are stored and accessed.
         /// </summary>
-        public IAssetBank<AssetReference, Sprite> AssetBank => imageBank;
+        public IAssetBank<AssetReferenceSprite, Sprite> AssetBank => imageBank;
         public async Task<Sprite> GetImage(string _id)
         {
             return await AssetBank.GetAsset(_id);
