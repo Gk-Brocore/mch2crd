@@ -1,18 +1,287 @@
+using Game.Assets;
+using Game.Card;
+using Game.Events;
+using Game.Factory;
+using Game.Layout;
+using Game.Layout.Grid;
+using Game.Utils;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
-public class LayoutController : MonoBehaviour
+public class LayoutController : MonoBehaviour , IGameEventsObserver
 {
-    // Start is called before the first frame update
-    void Start()
+    [Header("Grid Setup")]
+    [SerializeField] 
+    private BaseLayoutSettingsSO layoutDefinition;
+    [SerializeField] 
+    private ImageFactory imageFactory;
+
+    [Header("Game")]
+    [SerializeField] 
+    private float firstRevealedTime;
+
+    [Header("UI Elements")]
+    [SerializeField]
+    private GridUiLayout GridUiLayout;
+    [SerializeField]
+    private AssetReference cardPrefab;
+
+
+
+    private ILayoutCollection<CellData> layout;
+
+    private List<ICard> spawnedCards = new List<ICard>();
+    private int matchesFound;
+    public Action LevelComplete;
+    private CanvasGroup canvasGroup;
+
+    private ICardFactory cardFactory;
+
+    private ILayoutSettings layoutSettings;
+    private ILayoutView layoutView;
+    void Awake()
     {
-        
+        canvasGroup = GridUiLayout.GetComponent<CanvasGroup>();
+        cardFactory = new AddressableCardFactory(cardPrefab);
+
+        layoutSettings = layoutDefinition;
+        layoutView = GridUiLayout;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        GameEventsHandler.RegisterObserver(this);
     }
+    private void OnDisable()
+    {
+        GameEventsHandler.UnregisterObserver(this);
+    }
+
+    public void StartGame()
+    {
+        if (!ValidateSetup()) 
+            return;
+        matchesFound = 0;
+        GameEventsHandler.Instance.EmitGameStart();
+        InitilizeLayout(MakeGridCollection());
+        SetupUILayout();
+        SpawnUICards(false);
+        SaveCurrentLayout(true);
+    }
+
+    private void InitilizeLayout(ILayoutCollection<CellData> _collection)
+    {
+        layoutSettings.PrepareLayout();
+
+        layout = _collection;
+
+        for (int y = 0; y < layoutSettings.Height; y++)
+        {
+            for (int x = 0; x < layoutSettings.Width; x++)
+            {
+                var _position = new Vector2Int(x, y);
+                layout.SetValue(x, y, layoutSettings.CreateCellData(_position));
+            }
+        }
+    }
+
+    private ILayoutCollection<CellData> MakeGridCollection()
+    {
+        return new GridCollection<CellData>(
+                                layoutSettings.Width,
+                                layoutSettings.Height,
+                                layoutSettings.CellSize,
+                                layoutSettings.CellSpacing,
+                                layoutSettings.Origin,
+                                CreateNewCell);
+    }
+
+    private CellData CreateNewCell() => new("", State.Hidden);
+
+    private void SetupUILayout()
+    {
+        if (GridUiLayout == null)
+        {
+            GridUiLayout = gameObject.AddComponent<GridUiLayout>();
+            layoutView = GridUiLayout;
+        }
+
+        GridUiLayout.fitType = GridUiLayout.FitType.FIXEDROWS;
+        layoutView.Rows = layoutDefinition.Height;
+        layoutView.Columns = layoutDefinition.Width;
+        layoutView.Spacing = layoutDefinition.CellSpacing;
+        layoutView.CellSize = layoutDefinition.CellSize;
+        layoutView.Padding = layoutDefinition.Padding;
+    }
+
+    private bool ValidateSetup()
+    {
+        if (layoutDefinition == null || cardPrefab == null)
+        {
+            Debug.LogError("GridUIController setup missing references!", this);
+            return false;
+        }
+        return true;
+    }
+
+    #region Save/Load
+    public void LoadGame()
+    {
+        if (!ValidateSetup()) 
+            return;
+        List<CellData> savedGrid = null; //TODO: Load from file or player prefs
+        matchesFound = GetMatchCount(savedGrid);
+        InitilizeLayout(MakeGridCollection());
+        layout.FromList(savedGrid);
+        SetupUILayout();
+        SpawnUICards(true);
+    }
+    public int GetMatchCount(List<CellData> saved)
+    {
+        int count = 0;
+        foreach (var _cell in saved)
+        {
+            if (_cell.matched)
+                count++;
+        }
+        return count / 2;
+    }
+    private void SaveCurrentLayout(bool newGame = false)
+    {
+        if (layout == null)
+            return;
+        var _fromGrid = layout.ToList();
+        //TODO: Save to file or player prefs
+    }
+
+    #endregion
+
+    #region Cards
+
+    private async void SpawnUICards(bool _load)
+    {
+        canvasGroup.interactable = false;
+        ClearOldCards();
+
+        var _imagesIds = imageFactory.GetShuffledImageIds(layoutDefinition.TotalCombinations);
+        var _deck = _load ? new List<string>() : MakeDeck(_imagesIds);
+
+        int _index = 0;
+        for (int y = 0; y < layoutDefinition.Height; y++)
+        {
+            for (int x = 0; x < layoutDefinition.Width; x++)
+            {
+                var _gridPos = new Vector2Int(x, y);
+                var _data = layout.GetValue(x, y);
+
+                ICard _card = await cardFactory.CreateAsync(layoutView.transform, $"Card_{x}_{y}");
+
+                spawnedCards.Add(_card);
+
+                if (_data.state != State.Hidden && !_data.matched)
+                {
+                    string _id = _load ? _data.id : _deck[_index];
+                    if (!_load)
+                        _data.id = _id;
+
+                    var _sprite = await imageFactory.GetImage(_id);
+                    _card.Initialize(_id, _gridPos, _sprite, imageFactory.AssetBank.AssetSize);
+                    _index++;
+                    continue;
+                }
+
+                _card.Initialize($"Card_{x}_{y}", _gridPos, null, Vector2.zero);
+            }
+        }
+
+        foreach (var card in spawnedCards)
+        {
+            card.Reveal();
+        }
+        await Task.Delay(TimeSpan.FromSeconds(firstRevealedTime));
+        foreach (var _card in spawnedCards)
+        {
+            _card.Hide();
+        }
+        canvasGroup.interactable = true;
+    }
+
+    private void ClearOldCards()
+    {
+        foreach (var _card in spawnedCards)
+        {
+            if (_card != null)
+                Destroy(_card.gameObject);
+        }
+        spawnedCards.Clear();
+    }
+
+    private List<string> MakeDeck(List<string> input)
+    {
+        List<string> all = new();
+        all.AddRange(input);
+        all.AddRange(input);
+        all.Shuffle();
+        return all;
+    }
+
+    public void SetCellState(Vector2Int gridPos, bool newState)
+    {
+        var _cell = layout.GetValue(gridPos.x, gridPos.y);
+        _cell.matched = newState;
+    }
+
+    private IEnumerator WaitForAnim(ICard card)
+    {
+        while (!card.IsAnimDone)
+        {
+            yield return null;
+        }
+        card.Hide();
+    }
+
+    #endregion
+
+    #region Events
+
+    public void OnMatch(ICard first, ICard second)
+    {
+        SetCellState(first.Coordinates, true);
+        SetCellState(second.Coordinates, true);
+
+        StartCoroutine(WaitForAnim(first));
+        StartCoroutine(WaitForAnim(second));
+        matchesFound++;
+
+        if (matchesFound == layoutDefinition.TotalCombinations)
+        {
+            GameEventsHandler.Instance.EmitGameComplete();
+        }
+    }
+
+    public void OnMismatch(ICard first, ICard second)
+    {
+    }
+    public void OnQueueCleared()
+    {
+    }
+    public void OnScoreUpdated(int score)
+    {
+    }
+    public void OnComboUpdated(int combo)
+    {
+    }
+    public void OnGameStart()
+    {
+    }
+    public void OnGameComplete()
+    {
+    }
+
+    #endregion
+
 }

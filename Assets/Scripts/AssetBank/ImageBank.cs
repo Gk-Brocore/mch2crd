@@ -23,6 +23,8 @@ namespace Game.Assets
 
         public SerializableDictionary<string, AssetReference> entries;
 
+        public Vector2 AssetSize => imageSize;
+
         public AssetReference GetAssetById(string _id)
         {
             if(entries.TryGet(_id, out AssetReference _entry))

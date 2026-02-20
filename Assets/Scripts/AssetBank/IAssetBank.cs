@@ -15,6 +15,8 @@ namespace Game.Assets
     /// <typeparam name="K">Useable Type</typeparam>
     public interface IAssetBank<T,K>
     {
+
+        public Vector2 AssetSize { get; }
         T GetAssetById(string _id);
         Task<K> GetAsset(string _id);
         List<string> GetShuffled(int _count);

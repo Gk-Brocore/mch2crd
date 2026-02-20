@@ -29,14 +29,14 @@ namespace Game.Card
 
         private bool isAnimDone;
 
-        private Vector2Int gridPosition;
+        private Vector2Int coordinates;
 
         public bool IsAnimDone { get => isAnimDone; set => isAnimDone = value; }
 
         public string Id => cardID;
         public bool IsMatched => isMatched;
         public bool IsRevealed => isRevealed;
-        public Vector2Int GridPosition => gridPosition;
+        public Vector2Int Coordinates => coordinates;
 
         private void Awake()
         {
@@ -48,9 +48,9 @@ namespace Game.Card
 
         }
 
-        public void Initialize(string _id, Vector2Int _gridPos, Sprite _sprite, Vector2 _imgSize, bool _showDebug = false)
+        public void Initialize(string _id, Vector2Int _pos, Sprite _sprite, Vector2 _imgSize, bool _showDebug = false)
         {
-            gridPosition = _gridPos;
+            coordinates = _pos;
 
             transform.localScale = Vector3.one;
 
@@ -118,11 +118,7 @@ namespace Game.Card
             animator.SetTrigger(mismatchHash);
         }
 
-        public Vector2Int GetGridPosition()
-        {
-            return gridPosition;
-        }
-
+        
    
     }
 }

@@ -5,6 +5,8 @@ namespace Game.Events
 {
     public class GameEventsEmitter : IGameEventsEmitter
     {
+        public event Action OnGameStart;
+        public event Action OnGameComplete;
         public event Action<ICard, ICard> OnMatch;
         public event Action<ICard, ICard> OnMismatch;
         public event Action OnQueueCleared;
@@ -13,6 +15,8 @@ namespace Game.Events
 
         public void RegisterObserver(IGameEventsObserver observer)
         {
+            OnGameStart += observer.OnGameStart;
+            OnGameComplete += observer.OnGameComplete;
             OnMatch += observer.OnMatch;
             OnMismatch += observer.OnMismatch;
             OnQueueCleared += observer.OnQueueCleared;
@@ -22,12 +26,17 @@ namespace Game.Events
 
         public void UnregisterObserver(IGameEventsObserver observer)
         {
+            OnGameStart -= observer.OnGameStart;
+            OnGameComplete -= observer.OnGameComplete;
             OnMatch -= observer.OnMatch;
             OnMismatch -= observer.OnMismatch;
             OnQueueCleared -= observer.OnQueueCleared;
             OnScoreUpdated -= observer.OnScoreUpdated;
             OnComboUpdated -= observer.OnComboUpdated;
         }
+
+        public void EmitGameStart() => OnGameStart?.Invoke();
+        public void EmitGameComplete() => OnGameComplete?.Invoke();
 
         public void EmitMatch(ICard first, ICard second) => OnMatch?.Invoke(first, second);
         public void EmitMismatch(ICard first, ICard second) => OnMismatch?.Invoke(first, second);

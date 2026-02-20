@@ -15,5 +15,7 @@ namespace Game.Layout
         Vector2 Spacing { get; set; }
         RectOffset Padding { get; set; }
 
+        Transform transform { get; }
+
     }
 }

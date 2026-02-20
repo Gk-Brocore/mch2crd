@@ -13,13 +13,16 @@ namespace Game.Card
         string Id { get; }
         bool IsMatched { get; }
         bool IsRevealed { get; }
-        Vector2Int GridPosition { get; }
+        bool IsAnimDone { get; }
+        Vector2Int Coordinates { get; }
+
+        GameObject gameObject { get; }
 
         void Reveal();
         void Hide();
         void SetMatched(bool matched);
         void Mismatch();
 
-        void Initialize(string _id, Vector2Int _gridPos, Sprite _sprite, Vector2 _imgSize, bool _showDebug = false);
+        void Initialize(string _id, Vector2Int _pos, Sprite _sprite, Vector2 _imgSize, bool _showDebug = false);
     }
 }

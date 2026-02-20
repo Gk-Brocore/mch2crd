@@ -16,7 +16,7 @@ namespace Game.Core
     /// and emits relevant game events to notify other parts of the system about changes in game state, 
     /// such as score updates, combo updates, matches, mismatches, and queue clearing.
     /// </summary>
-    public class GameContoller : MonoBehaviour 
+    public class GameContoller : MonoBehaviour , IGameEventsObserver
     {
         [Header("Debug Settings")]
         public bool debugMode = true;
@@ -71,6 +71,7 @@ namespace Game.Core
                 return;
 
             inputProvider.OnClick += commander.HandleSelect;
+            GameEventsHandler.RegisterObserver(this);
         }
         private void OnDisable()
         {
@@ -78,7 +79,10 @@ namespace Game.Core
                 return;
 
             inputProvider.OnClick -= commander.HandleSelect;
+            GameEventsHandler.UnregisterObserver(this);
         }
+
+
 
         void Start()
         {
@@ -125,6 +129,35 @@ namespace Game.Core
             lastMatchTime = 0;
             eventEmitter.EmitScoreUpdated(score);
             eventEmitter.EmitComboUpdated(comboCount);
+        }
+
+        public void OnGameStart()
+        {
+            ResetScore();
+        }
+
+        public void OnGameComplete()
+        {
+        }
+
+        public void OnMatch(ICard first, ICard second)
+        {
+        }
+
+        public void OnMismatch(ICard first, ICard second)
+        {
+        }
+
+        public void OnQueueCleared()
+        {
+        }
+
+        public void OnScoreUpdated(int score)
+        {
+        }
+
+        public void OnComboUpdated(int combo)
+        {
         }
     }
 }
