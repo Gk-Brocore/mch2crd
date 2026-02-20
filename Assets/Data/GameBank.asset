@@ -14,11 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Settings:
     List:
-    - key: 3x3
-      value: {fileID: 11400000, guid: 42186d160a47e1a448c3575d72db94f9, type: 2}
-    - key: 4x5
+    - key: 2x2
       value: {fileID: 11400000, guid: 5c92ce5a5435bf640b238536a91a001b, type: 2}
+    - key: 2x3
+      value: {fileID: 11400000, guid: 42186d160a47e1a448c3575d72db94f9, type: 2}
+    - key: 5x6
+      value: {fileID: 11400000, guid: a2b786151b6e567499ea3dbd5a885f7c, type: 2}
   Images:
     List:
     - key: Colors
       value: {fileID: 11400000, guid: 85a925401d2452a46bdd0a1c5c11129b, type: 2}
+    - key: Weapons
+      value: {fileID: 11400000, guid: 09bd3ab3507c3724ca9ce9480556ec35, type: 2}
