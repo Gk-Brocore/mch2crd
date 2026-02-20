@@ -5,14 +5,6 @@ using System.Collections.Generic;
 namespace Game.Commander
 {
 
-    public interface ICommandInvoker
-    {
-        void Enqueue(ICommand command);
-        void ExecuteAll();
-        void UndoLast();
-        void ClearHistory();
-    }
-
     public class CommandInvoker : ICommandInvoker
     {
         private readonly Queue<ICommand> queue = new();

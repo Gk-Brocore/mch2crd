@@ -35,7 +35,7 @@ namespace Game.Core
         private IGameEventsEmitter eventEmitter;
         private IInputProvider inputProvider;
         private ICardSelector cardSelector;
-        private GameCommander commander;
+        private IGameCommander commander;
         private float lastMatchTime;
 
 

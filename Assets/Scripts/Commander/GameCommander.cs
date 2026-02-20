@@ -7,11 +7,12 @@ using UnityEngine;
 
 namespace Game.Commander
 {
+
     /// <summary>
     /// The GameCommander class orchestrates the interactions between card selection, processing, and command execution in the memory game. It listens for card selection events, processes the selected cards to determine matches or mismatches, and uses a command pattern to execute actions such as revealing, hiding, and setting matched states. 
     /// The GameCommander also provides an undo functionality to revert the last action taken.
     /// </summary>
-    public class GameCommander 
+    public class GameCommander : IGameCommander
     {
         private readonly ICardSelector cardSelector;
         private readonly ICardProcessor cardProcessor;
