@@ -33,6 +33,10 @@ MonoBehaviour:
     m_Address: Assets/glossy bubbles/img/1.png
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 5bbc376ac01ed3c448f6dda03c9d3acf
+    m_Address: Assets/Melee Weapons Icons/Weapons.spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 149c1ce870887634d96b049ef7088e5a, type: 2}
   m_SchemaSet:

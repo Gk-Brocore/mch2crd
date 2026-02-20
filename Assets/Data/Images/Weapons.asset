@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b1970337b5d6d640adde1a2e4a39ebd, type: 3}
+  m_Name: Weapons
+  m_EditorClassIdentifier: 
+  BankName: Weapons
+  imageSize: {x: 80, y: 80}
+  entries:
+    List:
+    - key: broad_sword
+      value:
+        m_AssetGUID: 5bbc376ac01ed3c448f6dda03c9d3acf
+        m_SubObjectName: broad_sword
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - key: copper_sword
+      value:
+        m_AssetGUID: 5bbc376ac01ed3c448f6dda03c9d3acf
+        m_SubObjectName: copper_sword
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - key: cutlass_sword
+      value:
+        m_AssetGUID: 5bbc376ac01ed3c448f6dda03c9d3acf
+        m_SubObjectName: cutlass_sword
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - key: gladius_sword
+      value:
+        m_AssetGUID: 5bbc376ac01ed3c448f6dda03c9d3acf
+        m_SubObjectName: gladius_sword
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - key: iron_sword
+      value:
+        m_AssetGUID: 5bbc376ac01ed3c448f6dda03c9d3acf
+        m_SubObjectName: iron_sword
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - key: katana_sword
+      value:
+        m_AssetGUID: 5bbc376ac01ed3c448f6dda03c9d3acf
+        m_SubObjectName: katana_sword
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - key: rapier_sword
+      value:
+        m_AssetGUID: 5bbc376ac01ed3c448f6dda03c9d3acf
+        m_SubObjectName: rapier_sword
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - key: saber_sword
+      value:
+        m_AssetGUID: 5bbc376ac01ed3c448f6dda03c9d3acf
+        m_SubObjectName: saber_sword
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
