@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b1970337b5d6d640adde1a2e4a39ebd, type: 3}
+  m_Name: Colors
+  m_EditorClassIdentifier: 
+  BankName: Color
+  imageSize: {x: 80, y: 80}
+  entries:
+    List:
+    - key: 1
+      value:
+        m_AssetGUID: 1fda507d090e23c4986912892b8c9f6f
+        m_SubObjectName: 1
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - key: 2
+      value:
+        m_AssetGUID: 1fda507d090e23c4986912892b8c9f6f
+        m_SubObjectName: 2
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - key: 3
+      value:
+        m_AssetGUID: 1fda507d090e23c4986912892b8c9f6f
+        m_SubObjectName: 3
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - key: 4
+      value:
+        m_AssetGUID: 1fda507d090e23c4986912892b8c9f6f
+        m_SubObjectName: 4
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - key: 5
+      value:
+        m_AssetGUID: 1fda507d090e23c4986912892b8c9f6f
+        m_SubObjectName: 5
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - key: 6
+      value:
+        m_AssetGUID: 1fda507d090e23c4986912892b8c9f6f
+        m_SubObjectName: 6
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - key: 7
+      value:
+        m_AssetGUID: 1fda507d090e23c4986912892b8c9f6f
+        m_SubObjectName: 7
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - key: 8
+      value:
+        m_AssetGUID: 1fda507d090e23c4986912892b8c9f6f
+        m_SubObjectName: 8
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - key: 10
+      value:
+        m_AssetGUID: 1fda507d090e23c4986912892b8c9f6f
+        m_SubObjectName: 10
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - key: 11
+      value:
+        m_AssetGUID: 1fda507d090e23c4986912892b8c9f6f
+        m_SubObjectName: 11
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - key: 12
+      value:
+        m_AssetGUID: 1fda507d090e23c4986912892b8c9f6f
+        m_SubObjectName: 12
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - key: 13
+      value:
+        m_AssetGUID: 1fda507d090e23c4986912892b8c9f6f
+        m_SubObjectName: 13
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - key: 14
+      value:
+        m_AssetGUID: 1fda507d090e23c4986912892b8c9f6f
+        m_SubObjectName: 14
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - key: 15
+      value:
+        m_AssetGUID: 1fda507d090e23c4986912892b8c9f6f
+        m_SubObjectName: 15
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0

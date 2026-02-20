@@ -25,6 +25,14 @@ MonoBehaviour:
     m_Address: Assets/Prefabs/Button.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 1fda507d090e23c4986912892b8c9f6f
+    m_Address: Assets/glossy bubbles/Colors.spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cf35119f7b53e1c419bb1c7cb3af6dda
+    m_Address: Assets/glossy bubbles/img/1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 149c1ce870887634d96b049ef7088e5a, type: 2}
   m_SchemaSet:

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e15ac1fe51a40d4ca53b1b2f943d419, type: 3}
-  m_Name: 3x3
+  m_Name: 4x5
   m_EditorClassIdentifier: 
-  gridName: 3 x 3
-  width: 3
-  height: 3
+  gridName: 4 x 5
+  width: 4
+  height: 5
   cellSize: {x: 200, y: 250}
   cellSpacing: {x: 2, y: 2}
   padding:
@@ -32,15 +32,37 @@ MonoBehaviour:
     state: 1
   - position: {x: 0, y: 2}
     state: 1
+  - position: {x: 0, y: 3}
+    state: 1
+  - position: {x: 0, y: 4}
+    state: 1
   - position: {x: 1, y: 0}
     state: 1
   - position: {x: 1, y: 1}
-    state: 2
+    state: 1
   - position: {x: 1, y: 2}
+    state: 1
+  - position: {x: 1, y: 3}
+    state: 1
+  - position: {x: 1, y: 4}
     state: 1
   - position: {x: 2, y: 0}
     state: 1
   - position: {x: 2, y: 1}
     state: 1
   - position: {x: 2, y: 2}
+    state: 1
+  - position: {x: 2, y: 3}
+    state: 1
+  - position: {x: 2, y: 4}
+    state: 1
+  - position: {x: 3, y: 0}
+    state: 1
+  - position: {x: 3, y: 1}
+    state: 1
+  - position: {x: 3, y: 2}
+    state: 1
+  - position: {x: 3, y: 3}
+    state: 1
+  - position: {x: 3, y: 4}
     state: 1

@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Colors
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 8
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: eff1dafda970915459a69aeedb4fd95d, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 793ffa612b1b3de4996b7ebac0393def, type: 3}
+  - {fileID: 21300000, guid: c4797b928419e844aaef5d3f039aa7f3, type: 3}
+  - {fileID: 21300000, guid: 0607a023efa482e4d9055e78cf332f3d, type: 3}
+  - {fileID: 21300000, guid: d9f0c523cc024974fb5620d309b3bb54, type: 3}
+  - {fileID: 21300000, guid: 6641c5740f4e3ad4bb023a7cddc9090c, type: 3}
+  - {fileID: 21300000, guid: 3afbf3e535d030047874f361fb7ec346, type: 3}
+  - {fileID: 21300000, guid: 3995627625e4d9d4386409a2bf99e8cc, type: 3}
+  - {fileID: 21300000, guid: c04363870dc953b4d991e02af07d773a, type: 3}
+  - {fileID: 21300000, guid: fc3703e7b2fa1c14284ac2808cc777fd, type: 3}
+  - {fileID: 21300000, guid: 16ae76088a3d7e147921f97b001083e6, type: 3}
+  - {fileID: 21300000, guid: db1bb1484620e8e4d8afff9f6d5c6514, type: 3}
+  - {fileID: 21300000, guid: 892ec8e83dd7fed4dad701d53f01afdc, type: 3}
+  - {fileID: 21300000, guid: 3320bc4a868201f4aa3895c523fcdebf, type: 3}
+  - {fileID: 21300000, guid: fd2b5a6b515861c4f980ebd7b7fdaad0, type: 3}
+  - {fileID: 21300000, guid: b60bdd9bec74acf4f8af4ed562d149ac, type: 3}
+  - {fileID: 21300000, guid: 9899d8fb4d2f3b44386173791c68445b, type: 3}
+  - {fileID: 21300000, guid: 62fff89cb0b622242bf13b19340889eb, type: 3}
+  - {fileID: 21300000, guid: cf35119f7b53e1c419bb1c7cb3af6dda, type: 3}
+  - {fileID: 21300000, guid: 1652f2efa5721a446892d51b273576dc, type: 3}
+  - {fileID: 21300000, guid: 39cdb9ff05036254493f8b78679c69a0, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - 13
+  - 3
+  - 14
+  - 9
+  - scr1
+  - 11
+  - 2
+  - 15
+  - scr3
+  - 8
+  - 6
+  - scr4
+  - 10
+  - 12
+  - 7
+  - scr2
+  - 16
+  - 1
+  - 5
+  - 4
+  m_RenderDataMap: {}
+  m_Tag: Colors
+  m_IsVariant: 0
