@@ -1,5 +1,5 @@
-using Game.Assets;
 using Game.Card;
+using Game.Core;
 using Game.Events;
 using Game.Factory;
 using Game.Layout;
@@ -14,12 +14,7 @@ using UnityEngine.AddressableAssets;
 
 public class LayoutController : MonoBehaviour , IGameEventsObserver
 {
-    [Header("Grid Setup")]
-    [SerializeField] 
-    private BaseLayoutSettingsSO layoutDefinition;
-    [SerializeField] 
-    private ImageFactory imageFactory;
-
+  
     [Header("Game")]
     [SerializeField] 
     private float firstRevealedTime;
@@ -43,12 +38,12 @@ public class LayoutController : MonoBehaviour , IGameEventsObserver
 
     private ILayoutSettings layoutSettings;
     private ILayoutView layoutView;
-    void Awake()
+    void Start()
     {
         canvasGroup = GridUiLayout.GetComponent<CanvasGroup>();
         cardFactory = new AddressableCardFactory(cardPrefab);
 
-        layoutSettings = layoutDefinition;
+        layoutSettings = GameDataManager.Instance.Layout;
         layoutView = GridUiLayout;
     }
 
@@ -111,16 +106,16 @@ public class LayoutController : MonoBehaviour , IGameEventsObserver
         }
 
         GridUiLayout.fitType = GridUiLayout.FitType.FIXEDROWS;
-        layoutView.Rows = layoutDefinition.Height;
-        layoutView.Columns = layoutDefinition.Width;
-        layoutView.Spacing = layoutDefinition.CellSpacing;
-        layoutView.CellSize = layoutDefinition.CellSize;
-        layoutView.Padding = layoutDefinition.Padding;
+        layoutView.Rows = layoutSettings.Height;
+        layoutView.Columns = layoutSettings.Width;
+        layoutView.Spacing = layoutSettings.CellSpacing;
+        layoutView.CellSize = layoutSettings.CellSize;
+        layoutView.Padding = layoutSettings.Padding;
     }
 
     private bool ValidateSetup()
     {
-        if (layoutDefinition == null || cardPrefab == null)
+        if (layoutSettings == null || cardPrefab == null)
         {
             Debug.LogError("GridUIController setup missing references!", this);
             return false;
@@ -167,13 +162,13 @@ public class LayoutController : MonoBehaviour , IGameEventsObserver
         canvasGroup.interactable = false;
         ClearOldCards();
 
-        var _imagesIds = imageFactory.GetShuffledImageIds(layoutDefinition.TotalCombinations);
+        var _imagesIds = GameDataManager.Instance.GetShuffledImageIds(layoutSettings.TotalCombinations);
         var _deck = _load ? new List<string>() : MakeDeck(_imagesIds);
 
         int _index = 0;
-        for (int y = 0; y < layoutDefinition.Height; y++)
+        for (int y = 0; y < layoutSettings.Height; y++)
         {
-            for (int x = 0; x < layoutDefinition.Width; x++)
+            for (int x = 0; x < layoutSettings.Width; x++)
             {
                 var _gridPos = new Vector2Int(x, y);
                 var _data = layout.GetValue(x, y);
@@ -188,8 +183,8 @@ public class LayoutController : MonoBehaviour , IGameEventsObserver
                     if (!_load)
                         _data.id = _id;
 
-                    var _sprite = await imageFactory.GetImage(_id);
-                    _card.Initialize(_id, _gridPos, _sprite, imageFactory.AssetBank.AssetSize);
+                    var _sprite = await GameDataManager.Instance.GetImage(_id);
+                    _card.Initialize(_id, _gridPos, _sprite, GameDataManager.Instance.ImageBank.AssetSize);
                     _index++;
                     continue;
                 }
@@ -212,8 +207,9 @@ public class LayoutController : MonoBehaviour , IGameEventsObserver
 
     private void ClearOldCards()
     {
-        foreach (var _card in spawnedCards)
+        for (int _index = 0; _index < spawnedCards.Count; _index++)
         {
+            ICard _card = spawnedCards[_index];
             if (_card != null)
                 Destroy(_card.gameObject);
         }
@@ -257,7 +253,7 @@ public class LayoutController : MonoBehaviour , IGameEventsObserver
         StartCoroutine(WaitForAnim(second));
         matchesFound++;
 
-        if (matchesFound == layoutDefinition.TotalCombinations)
+        if (matchesFound == layoutSettings.TotalCombinations)
         {
             GameEventsHandler.Instance.EmitGameComplete();
         }

@@ -1,4 +1,5 @@
 ﻿
+using Game.Utils;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -15,10 +16,9 @@ namespace Game.Assets
     /// <typeparam name="K">Useable Type</typeparam>
     public interface IAssetBank<T,K>
     {
-
+        SerializableDictionary<string, T> Collection { get; set; }
         public Vector2 AssetSize { get; }
-        T GetAssetById(string _id);
-        Task<K> GetAsset(string _id);
+        public Task<K> GetAsset(string _id);
         List<string> GetShuffled(int _count);
     }
 }

@@ -15,7 +15,7 @@ namespace Game.Assets
     /// Sprites are loaded asynchronously using the AddressableManager.
     /// </summary>
     [CreateAssetMenu(fileName = "ImageBank", menuName = "ScriptableObjects/ImageBank")]
-    public class ImageBank : ScriptableObject , IAssetBank<AssetReference,Sprite>
+    public class ImageBank : ScriptableObject , IAssetBank<AssetReference, Sprite>
     {
 
         public string BankName;
@@ -24,6 +24,12 @@ namespace Game.Assets
         public SerializableDictionary<string, AssetReference> entries;
 
         public Vector2 AssetSize => imageSize;
+
+        public SerializableDictionary<string, AssetReference> Collection 
+        { 
+            get => entries; 
+            set => entries = value; 
+        }
 
         public AssetReference GetAssetById(string _id)
         {
