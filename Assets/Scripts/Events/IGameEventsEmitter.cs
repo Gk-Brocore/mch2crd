@@ -17,6 +17,8 @@ namespace Game.Events
 
         void EmitGameStart();
         void EmitGameComplete();
+
+        void EmitLoadGame();
         void EmitMatch(ICard first, ICard second);
         void EmitMismatch(ICard first, ICard second);
         void EmitQueueCleared();

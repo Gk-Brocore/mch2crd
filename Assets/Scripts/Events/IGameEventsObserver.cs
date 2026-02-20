@@ -6,6 +6,7 @@ namespace Game.Events
     {
         void OnGameStart();
         void OnGameComplete();
+        void OnGameLoad();
         void OnMatch(ICard first, ICard second);
         void OnMismatch(ICard first, ICard second);
         void OnQueueCleared();

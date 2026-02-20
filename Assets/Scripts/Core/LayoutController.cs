@@ -61,7 +61,6 @@ public class LayoutController : MonoBehaviour , IGameEventsObserver
         if (!ValidateSetup()) 
             return;
         matchesFound = 0;
-        GameEventsHandler.Instance.EmitGameStart();
         InitilizeLayout(MakeGridCollection());
         SetupUILayout();
         SpawnUICards(false);
@@ -273,9 +272,15 @@ public class LayoutController : MonoBehaviour , IGameEventsObserver
     }
     public void OnGameStart()
     {
+        StartGame();
     }
     public void OnGameComplete()
     {
+    }
+
+    public void OnGameLoad()
+    {
+        LoadGame();
     }
 
     #endregion

@@ -62,5 +62,28 @@ namespace Game.Core
         {
             return ImageBank.GetShuffled(_count);
         }
+
+        public void ChangeLayout(string _layout)
+        {
+            currentLayout = _layout;
+            Layout = Settings.GetAsset(_layout).Result;
+        }
+        public void ChangeLayout(ILayoutSettings _layout)
+        {
+            currentLayout = _layout.Name;
+            Layout = _layout;
+        }
+
+        public void ChangeImages(IAssetBank<AssetReference, Sprite> value)
+        {
+            currentImages = value.Name;
+            ImageBank = value;
+        }
+
+        public bool HasContinue()
+        {
+            //TODO Add save and load
+            return false;
+        }
     }
 }

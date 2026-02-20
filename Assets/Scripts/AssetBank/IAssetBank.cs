@@ -16,6 +16,7 @@ namespace Game.Assets
     /// <typeparam name="K">Useable Type</typeparam>
     public interface IAssetBank<T,K>
     {
+        string Name { get; }
         SerializableDictionary<string, T> Collection { get; set; }
         public Vector2 AssetSize { get; }
         public Task<K> GetAsset(string _id);

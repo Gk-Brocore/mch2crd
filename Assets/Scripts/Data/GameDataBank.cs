@@ -12,6 +12,9 @@ namespace Game.Data
     [CreateAssetMenu(fileName = "GameBank", menuName = "ScriptableObjects/Game Bank") ]
     public class GameDataBank : ScriptableObject , IAssetBank<BaseLayoutSettingsSO, BaseLayoutSettingsSO> , IAssetBank<ImageBank, ImageBank>
     {
+
+        public string Name => "Bank"; 
+        
         public SerializableDictionary<string,BaseLayoutSettingsSO> Settings;
         public SerializableDictionary<string, ImageBank> Images;
 

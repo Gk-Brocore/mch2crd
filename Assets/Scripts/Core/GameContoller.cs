@@ -159,5 +159,10 @@ namespace Game.Core
         public void OnComboUpdated(int combo)
         {
         }
+
+        public void OnGameLoad()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

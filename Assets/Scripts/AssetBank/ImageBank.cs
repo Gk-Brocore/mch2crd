@@ -25,6 +25,8 @@ namespace Game.Assets
 
         public Vector2 AssetSize => imageSize;
 
+        public string Name => BankName;
+
         public SerializableDictionary<string, AssetReference> Collection 
         { 
             get => entries; 
