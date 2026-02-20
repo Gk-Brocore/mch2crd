@@ -102,7 +102,7 @@ namespace Game.Core
 
             UpdateCombo();
             int points = baseMatchScore + (comboBonus * (comboCount - 1));
-            score = points;
+            score += points;
             eventEmitter.EmitScoreUpdated(score);
             eventEmitter.EmitComboUpdated(comboCount);
             eventEmitter.EmitQueueCleared();
